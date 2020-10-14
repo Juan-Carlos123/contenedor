@@ -1,0 +1,162 @@
+1. borrar todas imagenes
+docker system prune
+docker system prune -a
+
+docker ps
+docker stop imagenID
+docker system prune -a
+df -h
+
+docker network ls
+
+2. crear carpeta hola-express-v2
+npm init
+
+3. crear index.js
+
+var express = require('express');
+var app = express();
+
+app.get('/', c_inicio);
+app.get('/saludo', c_saludo);
+
+function c_inicio(req, res) {
+    res.send('<h1>Hola EXPRESS</h1>');
+}
+
+function c_saludo(req, res) {
+    res.send('<h1>Hola James</h1>');
+}
+
+function c_server(req, res) {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log(host + ' : '+port);
+}
+
+var server = app.listen(8000,c_server);
+
+4.instalar librerias
+var express = require('express');
+var app = express();
+
+app.get('/', c_inicio);
+app.get('/saludo', c_saludo);
+
+function c_inicio(req, res) {
+    res.send('<h1>Hola EXPRESS</h1>');
+}
+
+function c_saludo(req, res) {
+    res.send('<h1>Hola James</h1>');
+}
+
+function c_server(req, res) {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log(host + ' : '+port);
+}
+
+var server = app.listen(8000,c_server);
+
+4. instalar librerias de express
+npm install express
+
+5. ejecutar
+node index.js
+
+6. ingresar URL
+localhost:8000
+
+7. creamos .gitignore
+node_modules
+
+8. crear un repositorio en github
+hola-express-v2
+
+9. en nuestro proyecto hola-express-v2, ejecutamos
+echo "hola express" > README.me
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/jfarfantecsup/hola-express-v2.git
+git push -u origin main
+
+10. crear en la instancia ubuntu NUBE el archivo p2/Dockerfile
+mkdir p2
+cd p2
+nano Dockerfile
+
+FROM node
+ LABEL maintainer jfarfan@tecsup.edu.pe
+ RUN git clone -q https://github.com/jfarfantecsup/hola-express-v2.git
+ WORKDIR hola-express-v2
+ RUN npm install > /dev/null
+ EXPOSE 8000
+ CMD ["npm","start"]
+
+11. verificar el contendido del archivo package.json. agregar ("start": "node index.js")
+
+{
+  "name": "hola-express-v2",
+  "version": "1.0.0",
+  "description": "Ejemplo de express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jaime Farfan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
+
+12. verificar que funciona
+npm start
+
+13. actualizar repositorio
+
+git add .
+git commit -m "agregado el comando npm"
+git push
+
+14. crear imagen
+docker build .
+docker tag f8a014dd1f0b hola-express-v2
+docker run -i -t -p 3000:8000 --name demo-express hola-express-v2
+
+15. ir a URL
+http://54.175.197.135:3000/
+http://54.175.197.135:3000/saludo
+
+
+LAB 04
+
+1. Crear un aplicacion en express que muestre las siguientes rutas, 
+su app debe ejecutarse en el puerto 5000
+/
+/clientes  (mostrar 3 clientes)
+/productos (mostrar 3 productos)
+
+2. crear su repositorio en github
+3. subir su app a su repositorio
+4. crear su archivo Dockerfile (exponer el puerto 9000) y crear su imagen
+
+5. mostrar el URL
+ip:9000
+ip:9000/clientes
+ip:9000/productos
+
+
+
+
+
+
+
+
+
+
+
